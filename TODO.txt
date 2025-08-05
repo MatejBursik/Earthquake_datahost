@@ -1,0 +1,8 @@
+TODO:
+- earthquake-api:
+    - in Controller and EarthquakeService, add the remaining attributes that can be Null, also @RequestParam needs a Default
+    - figure out the CSV loading
+    - fix db tests with Mockito
+
+- frontend
+    (to input the data more easily)
