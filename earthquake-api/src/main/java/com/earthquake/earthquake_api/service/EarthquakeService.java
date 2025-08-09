@@ -21,12 +21,12 @@ public class EarthquakeService {
     public Earthquake createEarthquake(String title, Double magnitude, String datetimeStr,
             Double latitude, Double longitude) {
 
-        // convert datetime String to a DateTime
+        // Convert datetime String to a DateTime
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime datetime = LocalDateTime.parse(datetimeStr, formatter);
         
         Earthquake earthquake = new Earthquake(title, magnitude, datetime, latitude, longitude);
-        // add the remaining attributes that can be Null:
+        // TODO: add the remaining attributes that can be Null (similar to CsvLoaderService):
         // cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country
 
         if (earthquake.getId() != null) {
@@ -34,6 +34,11 @@ public class EarthquakeService {
         }
 
         return earthquakeRepository.save(earthquake);
+    }
+
+    // Bulk save earthquakes (for CSV import)
+    public List<Earthquake> saveAllEarthquakes(List<Earthquake> earthquakes) {
+        return earthquakeRepository.saveAll(earthquakes);
     }
 
     // Get all earthquakes

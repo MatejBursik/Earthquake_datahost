@@ -14,7 +14,7 @@ import com.earthquake.earthquake_api.service.EarthquakeService;
 
 @RestController
 @RequestMapping(path="/api")
-public class MainController {
+public class EarthquakeController {
     @Autowired
     private EarthquakeService earthquakeService;
 
