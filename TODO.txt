@@ -1,6 +1,5 @@
 TODO:
 - earthquake-api:
-    - in Controllers and EarthquakeService, add the remaining attributes that can be Null, also @RequestParam needs a Default
     - fix db tests with Mockito
 
 - frontend

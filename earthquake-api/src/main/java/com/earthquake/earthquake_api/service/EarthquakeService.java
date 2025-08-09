@@ -17,17 +17,47 @@ public class EarthquakeService {
     @Autowired
     private EarthquakeRepository earthquakeRepository;
 
-    // Create a new earthquake record
-    public Earthquake createEarthquake(String title, Double magnitude, String datetimeStr,
-            Double latitude, Double longitude) {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
+    // Create a new earthquake record
+    public Earthquake createEarthquake(String title, Double magnitude, String datetimeStr, Double latitude, Double longitude,
+            Integer cdi, Integer mmi, String alert, Boolean tsunami, Integer sig, String net, Integer nst, Double dmin, Double gap, String mag_type, Double depth, String location, String continent, String country) {
+        
         // Convert datetime String to a DateTime
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime datetime = LocalDateTime.parse(datetimeStr, formatter);
         
-        Earthquake earthquake = new Earthquake(title, magnitude, datetime, latitude, longitude);
-        // TODO: add the remaining attributes that can be Null (similar to CsvLoaderService):
-        // cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country
+        Earthquake earthquake = new Earthquake();
+
+        try {
+            // CSV columns:
+            // title, magnitude, date_time, cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, magType, depth, latitude, longitude, location, continent, country
+            // NotNull columns:
+            // title, magnitude, date_time, latitude, longitude
+            
+            earthquake.setTitle(title);
+            earthquake.setMagnitude(magnitude);
+            earthquake.setDateTime(datetime);
+            earthquake.setCdi(cdi);
+            earthquake.setMmi(mmi);
+            earthquake.setAlert(alert);
+            earthquake.setTsunami(tsunami);
+            earthquake.setSig(sig);
+            earthquake.setNet(net);
+            earthquake.setNst(nst);
+            earthquake.setDmin(dmin);
+            earthquake.setGap(gap);
+            earthquake.setMagType(mag_type);
+            earthquake.setDepth(depth);
+            earthquake.setLatitude(latitude);
+            earthquake.setLongitude(longitude);
+            earthquake.setLocation(location);
+            earthquake.setContinent(continent);
+            earthquake.setCountry(country);
+            
+        } catch (Exception e) {
+            System.err.println("Error parsing earthquake record: " + e.getMessage());
+            return null;
+        }
 
         if (earthquake.getId() != null) {
             throw new IllegalArgumentException("Cannot create earthquake with existing ID");

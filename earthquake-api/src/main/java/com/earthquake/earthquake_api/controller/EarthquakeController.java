@@ -19,14 +19,17 @@ public class EarthquakeController {
     private EarthquakeService earthquakeService;
 
     @PostMapping(path="/addNewEarthquake")
-    public @ResponseBody String addNewEarthquake(
-            @RequestParam String title, @RequestParam Double magnitude, @RequestParam String datetimeStr,
-            @RequestParam Double latitude, @RequestParam Double longitude) {
+    public @ResponseBody String addNewEarthquake(@RequestParam String title, @RequestParam Double magnitude, @RequestParam String datetimeStr,
+        @RequestParam Double latitude, @RequestParam Double longitude,
+        @RequestParam(required = false) Integer cdi, @RequestParam(required = false) Integer mmi, @RequestParam(required = false) String alert, @RequestParam(required = false) Boolean tsunami,
+        @RequestParam(required = false) Integer sig, @RequestParam(required = false) String net, @RequestParam(required = false) Integer nst, @RequestParam(required = false) Double dmin,
+        @RequestParam(required = false) Double gap, @RequestParam(required = false) String mag_type, @RequestParam(required = false) Double depth, @RequestParam(required = false) String location,
+        @RequestParam(required = false) String continent, @RequestParam(required = false) String country) {
 
         // add the remaining attributes that can be Null, so @RequestParam needs a Default:
         // cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country
         
-        earthquakeService.createEarthquake(title, magnitude, datetimeStr, latitude, longitude);
+        earthquakeService.createEarthquake(title, magnitude, datetimeStr, latitude, longitude, cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country);
 
         return "Saved";
     }
