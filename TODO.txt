@@ -1,6 +1,6 @@
 TODO:
 - earthquake-api:
-    - fix db tests with Mockito
+    - make more and better test
 
 - frontend
-    (to input the data more easily)
+    (to input the data more easily and to inspect it in a table)

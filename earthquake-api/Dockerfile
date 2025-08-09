@@ -4,8 +4,7 @@ RUN apk add openjdk17-jdk maven
 COPY [".", "/app"]
 WORKDIR "/app"
 RUN mvn dependency:resolve -B
-# RUN mvn package -B
-RUN mvn package -DskipTests -B
+RUN mvn package -B
 
 FROM alpine:latest
 

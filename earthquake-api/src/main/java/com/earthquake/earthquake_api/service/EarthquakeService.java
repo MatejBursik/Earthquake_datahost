@@ -19,6 +19,11 @@ public class EarthquakeService {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
+    // Save earthquake
+    public Earthquake saveEarthquake(Earthquake earthquake) {
+        return earthquakeRepository.save(earthquake);
+    }
+
     // Create a new earthquake record
     public Earthquake createEarthquake(String title, Double magnitude, String datetimeStr, Double latitude, Double longitude,
             Integer cdi, Integer mmi, String alert, Boolean tsunami, Integer sig, String net, Integer nst, Double dmin, Double gap, String mag_type, Double depth, String location, String continent, String country) {
@@ -63,7 +68,7 @@ public class EarthquakeService {
             throw new IllegalArgumentException("Cannot create earthquake with existing ID");
         }
 
-        return earthquakeRepository.save(earthquake);
+        return saveEarthquake(earthquake);
     }
 
     // Bulk save earthquakes (for CSV import)
