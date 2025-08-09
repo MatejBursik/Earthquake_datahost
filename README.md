@@ -2,18 +2,41 @@
 Web hosting a dataset for a data analysis project ([repo](https://github.com/MatejBursik/Earthquake_analysis)) using a containerized API written in Java.
 
 ## How to overate
-Run the container: `docker-compose -f docker-compose.yaml up --build -d`
+Run the container:
+```bash
+docker-compose -f docker-compose.yaml up --build -d
+```
 
-Shut down the container: `docker-compose -f docker-compose.yaml down`
+Shut down the container:
+```bash
+docker-compose -f docker-compose.yaml down
+```
 
 ## Test commands and addresses
-Test if containers are available: `http://localhost:8085/api/greeting?name=John`
+Test if containers are available:
+```bash
+http://localhost:8085/api/greeting?name=John
+```
 
-View all earthquakes: `http://localhost:8085/api/getAllEarthquakes`
+View all earthquakes:
+```bash
+http://localhost:8085/api/getAllEarthquakes
+```
 
-Upload an earthquake without csv file: `curl -X POST http://localhost:8085/api/addNewEarthquake -d "title=M 1.0 - 42 km W of Sola, Vanuatu" -d "magnitude=1.0" -d "datetimeStr=01-01-2025 12:47" -d "latitude=-13.8814" -d "longitude=167.158"`
+View the second page of size 5 of all earthquakes:
+```bash
+http://localhost:8085/api/pageable?page=1&size=5
+```
 
-Upload bulk of earthquakes with csv file: `curl -X POST http://localhost:8085/api/csv/import -F "file=@dataset/earthquake_1995-2023.csv"`
+Upload an earthquake without csv file:
+```bash
+curl -X POST http://localhost:8085/api/addNewEarthquake -d "title=M 1.0 - 42 km W of Sola, Vanuatu" -d "magnitude=1.0" -d "datetimeStr=01-01-2025 12:47" -d "latitude=-13.8814" -d "longitude=167.158"
+```
+
+Upload bulk of earthquakes with csv file:
+```bash
+curl -X POST http://localhost:8085/api/csv/import -F "file=@dataset/earthquake_1995-2023.csv"
+```
 
 ## Dataset
 File: [earthquake_1995-2023.csv](dataset/earthquake_1995-2023.csv)

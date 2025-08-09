@@ -1,6 +1,10 @@
 package com.earthquake.earthquake_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,7 @@ import com.earthquake.earthquake_api.service.EarthquakeService;
 
 @RestController
 @RequestMapping(path="/api")
+@CrossOrigin(origins = "*")
 public class EarthquakeController {
     @Autowired
     private EarthquakeService earthquakeService;
@@ -37,6 +42,17 @@ public class EarthquakeController {
     @GetMapping(path="/getAllEarthquakes")
     public @ResponseBody Iterable<Earthquake> getAllPeople() {
         return earthquakeService.getAllEarthquakes();
+    }
+
+    @GetMapping("/pageable")
+    public Page<Earthquake> getAllEarthquakesPageable(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        try {
+            Pageable pageable = PageRequest.of(page, size);
+            Page<Earthquake> earthquakes = earthquakeService.getAllEarthquakesPageable(pageable);
+            return earthquakes;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private static final String template = "Hello, %s!";
