@@ -2,6 +2,3 @@ TODO:
 - earthquake-api:
     - make more and better test
     - add mapping to the CsvController for file validation accessible for the user
-
-- frontend
-    (to input the data more easily and to inspect it in a table)

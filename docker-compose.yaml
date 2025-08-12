@@ -22,6 +22,18 @@ services:
         - MYSQL_DB_USER=root
         - MYSQL_DB_PASS=abc123
         restart: always
+
+    earthquake-frontend:
+        build:
+            context: ./earthquake-frontend
+            dockerfile: Dockerfile
+        ports:
+        - "8080:3000"
+        depends_on:
+        - earthquake-api
+        environment:
+        - REACT_APP_API_BASE_URL=http://localhost:8085/api
+        restart: always
         
 volumes:
     db:

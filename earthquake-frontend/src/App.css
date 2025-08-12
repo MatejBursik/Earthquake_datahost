@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f5f5f5;
+}
+
+.App {
+    min-height: 100vh;
+}
+
+.navbar {
+    background: #138496;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-content {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.upload-section {
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.upload-section.drag-over {
+    border-color: #138496;
+    background-color: #f8f9ff;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    background: #138496;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.upload-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.file-label:hover,
+.upload-button:hover {
+    filter: brightness(110%);
+}
+
+.upload-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #ddd;
+    color: black;
+    border-color: #ddd;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left: 1rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.earthquake-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.earthquake-table th,
+.earthquake-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.earthquake-table th {
+    background: #888;
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.earthquake-table tr:hover {
+    background-color: #f8f9ff;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: #138496;
+}
+
+.error {
+    background-color: #fee;
+    color: #c33;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #c33;
+    margin: 1rem 0;
+}
+
+.success {
+    background-color: #efe;
+    color: #363;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    margin: 1rem 0;
+}
+
+.info {
+    background-color: #e7f3ff;
+    color: #0066cc;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #0066cc;
+    margin: 1rem 0;
+}
+
+.alert-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.alert-badge.green {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-badge.yellow {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.alert-badge.orange {
+    background-color: #ffe8d1;
+    color: #8a2b06;
+    border: 1px solid #ffd19a;
+}
+
+.alert-badge.red {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+}
+
+.alert-badge.none {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+.tsunami-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.tsunami-badge.yes {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+}
+
+.tsunami-badge.no {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

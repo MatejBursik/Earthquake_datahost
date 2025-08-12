@@ -1,5 +1,5 @@
 # Earthquake datahost
-Web hosting a dataset for a data analysis project ([repo](https://github.com/MatejBursik/Earthquake_analysis)) using a containerized API written in Java.
+Project focusing on hosting a dataset for a data analysis project ([repo](https://github.com/MatejBursik/Earthquake_analysis)) using Docker to containerize Java backend, React frontend, and a MySQL database.
 
 ## How to overate
 Run the container:
@@ -13,6 +13,11 @@ docker-compose -f docker-compose.yaml down
 ```
 
 ## Test commands and addresses
+Frontend link:
+```bash
+http://localhost:8080/
+```
+
 Test if containers are available:
 ```bash
 http://localhost:8085/api/greeting?name=John

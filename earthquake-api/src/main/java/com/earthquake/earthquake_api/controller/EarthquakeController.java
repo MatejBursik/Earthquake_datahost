@@ -30,9 +30,6 @@ public class EarthquakeController {
         @RequestParam(required = false) Integer sig, @RequestParam(required = false) String net, @RequestParam(required = false) Integer nst, @RequestParam(required = false) Double dmin,
         @RequestParam(required = false) Double gap, @RequestParam(required = false) String mag_type, @RequestParam(required = false) Double depth, @RequestParam(required = false) String location,
         @RequestParam(required = false) String continent, @RequestParam(required = false) String country) {
-
-        // add the remaining attributes that can be Null, so @RequestParam needs a Default:
-        // cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country
         
         earthquakeService.createEarthquake(title, magnitude, datetimeStr, latitude, longitude, cdi, mmi, alert, tsunami, sig, net, nst, dmin, gap, mag_type, depth, location, continent, country);
 
