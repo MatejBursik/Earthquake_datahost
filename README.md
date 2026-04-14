@@ -1,7 +1,7 @@
 # Earthquake datahost
 Project focusing on hosting a dataset for a data analysis project ([repo](https://github.com/MatejBursik/Earthquake_analysis)) using Docker to containerize Java backend, React frontend, and a MySQL database.
 
-## How to overate
+## How to use
 Run the container:
 ```bash
 docker-compose -f docker-compose.yaml up --build -d
